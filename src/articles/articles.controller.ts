@@ -3,12 +3,12 @@ import { ArticlesService } from './articles.service';
 import { Article } from './schemas/article.schema';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
-@ApiTags('articles')
+@ApiTags('Статьи')
 @Controller('articles')
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
 
-  @ApiOperation({ summary: 'Create article' })
+  @ApiOperation({ summary: 'Создать статью' })
   @ApiResponse({ status: 201, description: 'The article has been successfully created.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiBody({
@@ -24,7 +24,7 @@ export class ArticlesController {
     return this.articlesService.createArticle(body.title, body.content);
   }
 
-  @ApiOperation({ summary: 'Update article' })
+  @ApiOperation({ summary: 'Обновить статью' })
   @ApiResponse({ status: 200, description: 'The article has been successfully updated.' })
   @ApiResponse({ status: 404, description: 'Article not found.' })
   @ApiBody({
@@ -40,7 +40,7 @@ export class ArticlesController {
     return this.articlesService.updateArticle(id, body);
   }
 
-  @ApiOperation({ summary: 'Delete article' })
+  @ApiOperation({ summary: 'Удалить статью' })
   @ApiResponse({ status: 200, description: 'The article has been successfully deleted.' })
   @ApiResponse({ status: 404, description: 'Article not found.' })
   @Delete(':id')
@@ -48,7 +48,7 @@ export class ArticlesController {
     return this.articlesService.deleteArticle(id);
   }
 
-  @ApiOperation({ summary: 'Like article' })
+  @ApiOperation({ summary: 'Поставить лайк статье' })
   @ApiResponse({ status: 200, description: 'The article has been successfully liked.' })
   @ApiResponse({ status: 404, description: 'Article not found.' })
   @Put(':id/like')
@@ -56,7 +56,7 @@ export class ArticlesController {
     return this.articlesService.likeArticle(id);
   }
 
-  @ApiOperation({ summary: 'Add comment to article' })
+  @ApiOperation({ summary: 'Добавить комментарий статье' })
   @ApiResponse({ status: 200, description: 'The comment has been successfully added.' })
   @ApiResponse({ status: 404, description: 'Article not found.' })
   @ApiBody({
@@ -71,7 +71,7 @@ export class ArticlesController {
     return this.articlesService.addComment(id, body.comment);
   }
 
-  @ApiOperation({ summary: 'Filter articles' })
+  @ApiOperation({ summary: 'Получить список всех статей' })
   @ApiResponse({ status: 200, description: 'The articles have been successfully filtered.' })
   @Get()
   filterArticles(@Query() query: any) {

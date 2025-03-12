@@ -3,12 +3,12 @@ import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
-@ApiTags('users')
+@ApiTags('Пользователи')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiOperation({ summary: 'Create user' })
+  @ApiOperation({ summary: 'Создание пользователя' })
   @ApiResponse({ status: 201, description: 'The user has been successfully created.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiBody({
@@ -25,7 +25,7 @@ export class UsersController {
     return this.usersService.createUser(body.name, body.email, body.password);
   }
 
-  @ApiOperation({ summary: 'Update user' })
+  @ApiOperation({ summary: 'Обновление данных пользователя' })
   @ApiResponse({ status: 200, description: 'The user has been successfully updated.' })
   @ApiResponse({ status: 404, description: 'User not found.' })
   @Put(':id')
@@ -33,7 +33,7 @@ export class UsersController {
     return this.usersService.updateUser(id, body);
   }
 
-  @ApiOperation({ summary: 'Delete user' })
+  @ApiOperation({ summary: 'Удаление пользователя' })
   @ApiResponse({ status: 200, description: 'The user has been successfully deleted.' })
   @ApiResponse({ status: 404, description: 'User not found.' })
   @Delete(':id')

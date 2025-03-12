@@ -1,8 +1,9 @@
 import { Controller, Patch, Param, Body, Post, Get } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
-import { ApiOperation, ApiParam, ApiBody } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiBody, ApiTags } from '@nestjs/swagger';
 import { Contact } from './schemas/contact.schema';
 
+@ApiTags('Обращения пользователей')
 @Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) {}
