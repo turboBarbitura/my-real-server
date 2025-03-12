@@ -1,22 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as swaggerUi from 'swagger-ui-express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
- // swagger setup
  const config = new DocumentBuilder()
- .setTitle('Backend Generator')
- .setDescription('Documentation API Test')
- .setVersion('1.0')
- .setBasePath('api/v1')
-//  .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
+ .setTitle('My Real Server API')
+ .setDescription('Докуменатци API сервиса для построения запросов с клиентской части')
+ .setVersion('0.1')
  .build();
 
-const document = SwaggerModule.createDocument(app, config);
-SwaggerModule.setup('swagger', app, document, {
+ // Конфиг сваггера со сторонними бандлами исключительно для деплоя на vercel
+ const document = SwaggerModule.createDocument(app, config);
+ SwaggerModule.setup('swagger', app, document, {
  customSiteTitle: 'Backend Generator',
  customfavIcon: 'https://avatars.githubusercontent.com/u/6936373?s=200&v=4',
  customJs: [
