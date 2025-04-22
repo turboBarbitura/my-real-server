@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ArticlesModule } from './articles/articles.module';
 import { ContactsModule } from './contacts/contacts.module';
-
+import { ErrorTestModule } from './testing-srevice/error-test.module';
 
 @Module({
   imports: [
@@ -17,6 +17,7 @@ import { ContactsModule } from './contacts/contacts.module';
     UsersModule,
     ArticlesModule,
     ContactsModule,
+    ErrorTestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
