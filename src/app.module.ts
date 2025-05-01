@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { ArticlesModule } from './articles/articles.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { ErrorTestModule } from './testing-srevice/error-test.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ErrorTestModule } from './testing-srevice/error-test.module';
     ArticlesModule,
     ContactsModule,
     ErrorTestModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

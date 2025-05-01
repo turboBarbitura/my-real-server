@@ -14,15 +14,14 @@ export class UsersController {
   @ApiBody({
     schema: {
       example: {
-        name: 'John Doe',
         email: 'john.doe@example.com',
         password: 'securePassword123'
       }
     }
   })
   @Post()
-  createUser(@Body() body: { name: string; email: string; password: string }) {
-    return this.usersService.createUser(body.name, body.email, body.password);
+  createUser(@Body() body: { email: string; password: string }) {
+    return this.usersService.create(body);
   }
 
   @ApiOperation({ summary: 'Обновление данных пользователя' })
